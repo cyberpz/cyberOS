@@ -1,0 +1,149 @@
+# i3 config for Dev Workbench - Cyber theme
+set $mod Mod4
+font pango:JetBrains Mono 11
+floating_modifier $mod
+
+# Window colors (cyber)
+client.focused          #00ff41 #0a0a1c #00ff41 #00ff41 #00ff41
+client.focused_inactive #6b6b8a #050510 #c7c7d9 #6b6b8a #6b6b8a
+client.unfocused        #6b6b8a #050510 #8a8aab #6b6b8a #6b6b8a
+client.urgent           #ff3b3b #ff3b3b #ffffff #ff3b3b #ff3b3b
+client.placeholder      #050510 #050510 #c7c7d9 #6b6b8a #6b6b8a
+
+client.background       #050510
+
+# Default window borders (no title bars)
+default_border none
+default_floating_border none
+hide_edge_borders both
+
+# Autostart
+exec --no-startup-id /home/user/.local/bin/fake-desktop-splash.sh
+exec_always --no-startup-id feh --bg-fill /home/user/Pictures/wallpaper-custom.jpg
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet
+exec --no-startup-id /usr/libexec/polkit-mate-authentication-agent-1
+exec --no-startup-id xss-lock -- i3lock -n -c 000000
+exec --no-startup-id /home/user/.local/bin/conky-desktop-layer.sh
+exec --no-startup-id /home/user/.local/bin/polybar-hover-monitor.sh
+exec --no-startup-id /home/user/.local/bin/setup-soft-bell.sh
+exec --no-startup-id systemctl --user start clipmenud
+
+# Basic apps
+bindsym $mod+Return exec rofi -show drun -show-icons
+bindsym $mod+d exec alacritty
+bindsym $mod+Shift+w exec firefox
+bindsym $mod+t exec --no-startup-id telegram
+bindsym $mod+Shift+t exec thunar
+bindsym $mod+Shift+s exec flameshot gui
+bindsym $mod+v exec --no-startup-id /home/user/.local/bin/clipmenu-rofi.sh
+bindsym $mod+b exec --no-startup-id /home/user/.local/bin/i3-toggle-borders.sh
+bindsym $mod+Shift+q kill
+bindsym $mod+question exec alacritty -e nvim /home/user/.config/i3/keybindings.md
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Uscire da i3?' -b 'Sì' 'i3-msg exit'"
+
+# Focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Workspaces
+set $ws1 "1:term"
+set $ws2 "2:web"
+set $ws3 "3:code"
+set $ws4 "4:files"
+set $ws5 "5:git"
+set $ws6 "6:chat"
+set $ws7 "7:media"
+set $ws8 "8:sys"
+set $ws9 "9:vm"
+set $ws10 "10:music"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Layout
+bindsym $mod+Shift+v split v
+bindsym $mod+h split h
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+# Resize mode
+mode "resize" {
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Reload / restart
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# Media / brightness / volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+# Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# Polybar top bar (squared, Cyber.Pz on the far left)
+exec_always --no-startup-id /home/user/.local/bin/launch-polybar.sh
+
+# Window rules
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Arandr"] floating enable
+for_window [class="Lxappearance"] floating enable
+for_window [class="Nm-connection-editor"] floating enable

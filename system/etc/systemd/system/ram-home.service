@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount /home/user in RAM with explicit persistence
+After=local-fs.target
+Before=lightdm.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/ram-home.sh start
+ExecStop=/usr/local/sbin/ram-home.sh stop
+
+[Install]
+WantedBy=graphical.target

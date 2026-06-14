@@ -1,0 +1,104 @@
+configuration {
+    font: "Terminus Bold 12";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    display-drun: "▸";
+    display-run:  "▸";
+    display-window: "▸";
+    drun-display-format: "{name}";
+    disable-history: false;
+    click-to-exit: true;
+    location: 0;
+}
+
+* {
+    black:     #000000;
+    bg:        #050505ee;
+    matrix:    #00ff41;
+    cyan:      #00ffff;
+    magenta:   #ff00ff;
+    red:       #ff003c;
+    white:     #ffffff;
+    gray:      #333333;
+
+    background-color: transparent;
+    text-color: @white;
+}
+
+window {
+    width: 22%;
+    height: 12%;
+    border: 2px;
+    border-color: @matrix;
+    background-color: @bg;
+    border-radius: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+mainbox {
+    spacing: 0;
+    padding: 2px;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    spacing:  3px;
+    padding:  3px 5px;
+    background-color: @black;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @matrix;
+    font: "Terminus Bold 13";
+}
+
+entry {
+    text-color: @white;
+    cursor: text;
+    placeholder: "";
+    placeholder-color: @gray;
+}
+
+listview {
+    spacing: 0;
+    fixed-height: false;
+    dynamic: true;
+    scrollbar: false;
+    lines: 3;
+    background-color: transparent;
+}
+
+element {
+    padding: 2px 5px;
+    spacing: 6px;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @white;
+}
+
+element selected.normal {
+    background-color: @matrix;
+    text-color: @black;
+}
+
+element alternate.normal {
+    background-color: #0a0a0a;
+    text-color: @white;
+}
+
+element-icon {
+    size: 1.2em;
+}
+
+element-text {
+    highlight: bold underline;
+    text-color: inherit;
+}
+
+mode-switcher {
+    enabled: false;
+}

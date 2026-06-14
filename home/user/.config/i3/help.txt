@@ -1,0 +1,40 @@
+╔══════════════════════════════════════════════════════════════╗
+║                     i3 - Guida rapida                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+APRIRE APPLICAZIONI
+  WIN + Invio        Apre il terminale (Alacritty)
+  WIN + d            Apre Rofi (launcher applicazioni)
+  WIN + t            Apre il file manager (Thunar)
+  WIN + Shift + t    Apre Telegram
+
+GESTIRE FINESTRE
+  WIN + freccia      Sposta il focus
+  WIN + Shift + freccia   Sposta la finestra
+  WIN + f            Fullscreen
+  WIN + Shift + spazio    Attiva/disattiva floating
+  WIN + q            Chiude la finestra
+
+WORKSPACE (scrivanie)
+  WIN + 1 ... 0      Vai al workspace 1-10
+  WIN + Shift + 1..0 Sposta finestra nel workspace 1-10
+  Clicca sulla barra in basso per cambiare workspace
+
+LAYOUT
+  WIN + h            Dividi orizzontale
+  WIN + v            Dividi verticale
+  WIN + s            Layout a stack
+  WIN + w            Layout a schede
+  WIN + e            Alterna layout
+
+ALTRI
+  WIN + r            Modalità resize (poi freccie)
+  WIN + Shift + c    Ricarica configurazione
+  WIN + Shift + r    Riavvia i3
+  WIN + Shift + e    Esci da i3 (logout)
+  WIN + ?            Mostra questa guida
+
+MOUSE
+  Clicca su una finestra per focusarla
+  Clicca su un workspace nella barra per cambiare
+  Trascina bordi di finestre flottanti per ridimensionare

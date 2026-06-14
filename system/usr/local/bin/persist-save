@@ -1,0 +1,24 @@
+#!/bin/bash
+# Salva manualmente home e root overlay RAM sulla chiavetta persistence.
+/usr/local/sbin/ram-home.sh save 2>/dev/null || true
+
+MOUNT_POINT="/run/live/persistence-auto"
+mkdir -p "$MOUNT_POINT"
+DEV=$(readlink -f /dev/disk/by-label/persistence 2>/dev/null)
+if [ -n "$DEV" ]; then
+    mountpoint -q "$MOUNT_POINT" || mount "$DEV" "$MOUNT_POINT" 2>/dev/null
+    if mountpoint -q "$MOUNT_POINT"; then
+        if [ -d /run/ram-root/upper ]; then
+            mkdir -p "$MOUNT_POINT/rw"
+            rsync -a --delete /run/ram-root/upper/ "$MOUNT_POINT/rw/"
+        fi
+        sync
+        echo "Salvato su $MOUNT_POINT"
+    else
+        echo "Errore: impossibile montare la pennetta" >&2
+        exit 1
+    fi
+else
+    echo "Errore: pennetta persistence non trovata" >&2
+    exit 1
+fi

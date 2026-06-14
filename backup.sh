@@ -1,0 +1,61 @@
+#!/bin/bash
+# backup.sh — Aggiorna il repo cyberOS dal sistema attuale.
+set -e
+
+REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$REPO_DIR"
+
+echo "[cyberOS-backup] Aggiornamento repo dal sistema..."
+
+# home configs
+mkdir -p home/user/.config/{i3,polybar,rofi,dunst,picom,alacritty}
+cp -v ~/.config/i3/config home/user/.config/i3/
+cp -v ~/.config/i3/keybindings.md home/user/.config/i3/
+cp -v ~/.config/i3/help.txt home/user/.config/i3/
+cp -v ~/.config/polybar/config.ini home/user/.config/polybar/
+cp -v ~/.config/rofi/config.rasi home/user/.config/rofi/
+cp -v ~/.config/dunst/dunstrc home/user/.config/dunst/
+cp -v ~/.config/picom/picom.conf home/user/.config/picom/
+cp -v ~/.config/alacritty/alacritty.toml home/user/.config/alacritty/
+cp -v ~/.bash_aliases home/user/
+cp -v ~/.bashrc home/user/.bashrc.orig
+
+# system configs
+mkdir -p system/etc/{systemd/system,systemd/journald.conf.d,sysctl.d,apt/apt.conf.d}
+sudo cp -v /etc/fstab system/etc/
+sudo cp -v /etc/systemd/system/ram-home.service system/etc/systemd/system/
+sudo cp -v /etc/systemd/system/ram-home-save.service system/etc/systemd/system/
+sudo cp -v /etc/systemd/system/ram-home-save.timer system/etc/systemd/system/
+sudo cp -v /etc/systemd/system/zram.service system/etc/systemd/system/
+sudo cp -v /etc/systemd/journald.conf.d/99-ram.conf system/etc/systemd/journald.conf.d/
+sudo cp -v /etc/sysctl.d/99-live.conf system/etc/sysctl.d/
+sudo cp -v /etc/apt/apt.conf.d/99-live system/etc/apt/apt.conf.d/
+sudo cp -v /etc/apt/sources.list system/etc/apt/
+
+mkdir -p system/usr/local/{bin,sbin}
+sudo cp -v /usr/local/sbin/ram-home.sh system/usr/local/sbin/
+sudo cp -v /usr/local/sbin/zram-setup.sh system/usr/local/sbin/
+sudo cp -v /usr/local/bin/telegram system/usr/local/bin/
+sudo cp -v /usr/local/bin/persist-save system/usr/local/bin/
+[ -f /usr/local/bin/clipnotify ] && sudo cp -v /usr/local/bin/clipnotify system/usr/local/bin/
+
+mkdir -p system/etc/systemd/user/clipmenud.service.d
+sudo cp -v /etc/systemd/user/clipmenud.service.d/override.conf system/etc/systemd/user/clipmenud.service.d/
+
+# boot configs from live medium
+mkdir -p boot/live-medium/boot/grub boot/live-medium/isolinux
+sudo cp -v /run/live/medium/boot/grub/grub.cfg boot/live-medium/boot/grub/ 2>/dev/null || true
+sudo cp -v /run/live/medium/boot/grub/config.cfg boot/live-medium/boot/grub/ 2>/dev/null || true
+sudo cp -v /run/live/medium/isolinux/isolinux.cfg boot/live-medium/isolinux/ 2>/dev/null || true
+sudo cp -v /run/live/medium/isolinux/menu.cfg boot/live-medium/isolinux/ 2>/dev/null || true
+sudo cp -v /run/live/medium/isolinux/live.cfg boot/live-medium/isolinux/ 2>/dev/null || true
+
+# package lists
+apt-mark showmanual > packages_manual.list
+dpkg --get-selections > packages_all.list
+
+# docs
+[ -f ~/aiReports/DebianPz_Cyberpunk_Workbench_Report.md ] && \
+    cp -v ~/aiReports/DebianPz_Cyberpunk_Workbench_Report.md docs/
+
+echo "[cyberOS-backup] Fatto. Esegui 'git status' per vedere le differenze."

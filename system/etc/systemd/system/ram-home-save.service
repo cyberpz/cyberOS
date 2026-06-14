@@ -1,0 +1,6 @@
+[Unit]
+Description=Save RAM home to persistence
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/ram-home.sh save

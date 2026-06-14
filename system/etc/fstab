@@ -1,0 +1,8 @@
+overlay / overlay rw,noatime 0 0
+tmpfs /tmp tmpfs nosuid,nodev,noatime 0 0
+tmpfs /var/log tmpfs nosuid,nodev,noatime,size=256M 0 0
+tmpfs /var/tmp tmpfs nosuid,nodev,noatime 0 0
+tmpfs /var/cache tmpfs nosuid,nodev,noatime,size=1G 0 0
+tmpfs /home/user/.cache tmpfs nosuid,nodev,noatime,size=1G,uid=1000,gid=1000,mode=0755 0 0
+tmpfs /var/lib/docker tmpfs nosuid,nodev,noatime,size=2G,mode=0755 0 0
+tmpfs /var/lib/anydesk tmpfs nosuid,nodev,noatime,size=128M,mode=0755 0 0

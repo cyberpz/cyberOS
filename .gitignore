@@ -1,0 +1,12 @@
+# Non tracciare file temporanei o di stato
+*.log
+*.tmp
+*.swp
+*~
+.DS_Store
+
+# Non tracciare cache o dati utente grandi
+home/user/.cache/
+home/user/.local/share/Trash/
+home/user/.thumbnails/
+home/user/tmp/
