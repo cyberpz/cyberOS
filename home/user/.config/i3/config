@@ -38,7 +38,7 @@ bindsym $mod+t exec --no-startup-id telegram
 bindsym $mod+Shift+t exec thunar
 bindsym $mod+Shift+s exec flameshot gui
 bindsym $mod+v exec --no-startup-id /home/user/.local/bin/clipmenu-rofi.sh
-bindsym $mod+Shift+d exec --no-startup-id /home/user/.local/bin/harness-domus.sh
+bindsym $mod+Shift+d exec --no-startup-id /home/user/.local/bin/domus-chat.sh
 bindsym $mod+b exec --no-startup-id /home/user/.local/bin/i3-toggle-borders.sh
 bindsym $mod+Shift+q kill
 bindsym $mod+question exec alacritty -e nvim /home/user/.config/i3/keybindings.md
