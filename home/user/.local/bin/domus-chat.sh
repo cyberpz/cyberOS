@@ -6,7 +6,7 @@ URL="https://10.10.10.100"
 PROFILE_DIR="$HOME/.mozilla/firefox/domus-chat"
 PID_FILE="/tmp/domus-chat.pid"
 WIDTH=520
-HEIGHT=720
+HEIGHT=480
 
 # Crea il profilo se non esiste
 if [ ! -d "$PROFILE_DIR" ]; then
