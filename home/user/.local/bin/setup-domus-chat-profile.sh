@@ -17,6 +17,7 @@ user_pref("browser.tabs.drawInTitlebar", false);
 user_pref("media.navigator.enabled", true);
 user_pref("media.peerconnection.enabled", true);
 user_pref("media.navigator.permission.disabled", true);
+user_pref("media.autoplay.default", 0);
 EOF
 
 # Nascondi UI Firefox
