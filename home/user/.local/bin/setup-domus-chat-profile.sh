@@ -14,6 +14,9 @@ mkdir -p "$PROFILE_DIR/chrome"
 cat > "$PROFILE_DIR/user.js" <<'EOF'
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("browser.tabs.drawInTitlebar", false);
+user_pref("media.navigator.enabled", true);
+user_pref("media.peerconnection.enabled", true);
+user_pref("media.navigator.permission.disabled", true);
 EOF
 
 # Nascondi UI Firefox
