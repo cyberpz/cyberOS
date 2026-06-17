@@ -14,11 +14,11 @@ toggle() {
 
 show() {
     if ip link show "$IFACE" >/dev/null 2>&1; then
-        # 🔒 connesso, verde Matrix
-        echo "%{A1:$SCRIPT toggle:}%{F#00ff41}🔒%{F-}%{A}"
+        # 🛡️ connesso, verde Matrix
+        echo "%{A1:$SCRIPT toggle:}%{F#00ff41}🛡️%{F-}%{A}"
     else
-        # 🔓 disconnesso, grigio
-        echo "%{A1:$SCRIPT toggle:}%{F#6b6b8a}🔓%{F-}%{A}"
+        # 🐉 disconnesso, grigio
+        echo "%{A1:$SCRIPT toggle:}%{F#6b6b8a}🐉%{F-}%{A}"
     fi
 }
 
