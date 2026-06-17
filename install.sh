@@ -30,7 +30,7 @@ sudo chmod +x /usr/local/sbin/zram-setup.sh
 sudo chmod +x /usr/local/bin/telegram
 sudo chmod +x /usr/local/bin/persist-save
 [ -f /usr/local/bin/clipnotify ] && sudo chmod +x /usr/local/bin/clipnotify
-[ -f "$USER_HOME/.local/bin/polybar-wireguard.sh" ] && chmod +x "$USER_HOME/.local/bin/polybar-wireguard.sh"
+find "$USER_HOME/.local/bin" -maxdepth 1 -type f -exec chmod +x {} \;
 
 # 4b. WireGuard config (contiene chiavi private)
 if [ -f "$REPO_DIR/system/etc/wireguard/PzBench.conf" ]; then

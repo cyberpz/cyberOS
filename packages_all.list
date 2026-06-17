@@ -1401,7 +1401,6 @@ libnspr4:amd64					install
 libnss-mdns:amd64				install
 libnss-myhostname:amd64				install
 libnss3:amd64					install
-libnss3-tools					install
 libntfs-3g89t64:amd64				install
 libnuma1:amd64					install
 libnumbertext-1.0-0:amd64			install

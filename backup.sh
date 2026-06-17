@@ -47,10 +47,9 @@ sudo cp -v /usr/local/bin/persist-save system/usr/local/bin/
 [ -f /usr/local/bin/sync-to-nvme.sh ] && sudo cp -v /usr/local/bin/sync-to-nvme.sh system/usr/local/bin/
 
 mkdir -p home/user/.local/bin
-[ -f ~/.local/bin/launch-polybar.sh ] && cp -v ~/.local/bin/launch-polybar.sh home/user/.local/bin/
-[ -f ~/.local/bin/polybar-hover-monitor.sh ] && cp -v ~/.local/bin/polybar-hover-monitor.sh home/user/.local/bin/
-[ -f ~/.local/bin/polybar-wireguard.sh ] && cp -v ~/.local/bin/polybar-wireguard.sh home/user/.local/bin/
-[ -f ~/.local/bin/sync-to-nvme.sh ] && cp -v ~/.local/bin/sync-to-nvme.sh home/user/.local/bin/
+for script in launch-polybar.sh polybar-hover-monitor.sh polybar-wireguard.sh sync-to-nvme.sh standby.sh power-menu.sh domus-chat.sh setup-domus-chat-profile.sh clipmenu-rofi.sh; do
+    [ -f "$HOME/.local/bin/$script" ] && cp -v "$HOME/.local/bin/$script" home/user/.local/bin/
+done
 
 mkdir -p system/etc/systemd/user/clipmenud.service.d
 sudo cp -v /etc/systemd/user/clipmenud.service.d/override.conf system/etc/systemd/user/clipmenud.service.d/
