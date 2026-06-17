@@ -470,6 +470,7 @@ fonts-yrsa-rasa					install
 fortune-mod					install
 fortunes-debian-hints				install
 fortunes-it					install
+fsarchiver					install
 fuse3						install
 g++						install
 g++-14						install
@@ -1400,6 +1401,7 @@ libnspr4:amd64					install
 libnss-mdns:amd64				install
 libnss-myhostname:amd64				install
 libnss3:amd64					install
+libnss3-tools					install
 libntfs-3g89t64:amd64				install
 libnuma1:amd64					install
 libnumbertext-1.0-0:amd64			install
@@ -2526,6 +2528,7 @@ p11-kit						install
 p11-kit-modules:amd64				install
 papirus-icon-theme				install
 parole						install
+partclone					install
 parted						install
 passwd						install
 patch						install

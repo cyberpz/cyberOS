@@ -26,7 +26,9 @@ sudo cp -v /etc/fstab system/etc/
 sudo cp -v /etc/systemd/system/ram-home.service system/etc/systemd/system/
 sudo cp -v /etc/systemd/system/ram-home-save.service system/etc/systemd/system/
 sudo cp -v /etc/systemd/system/ram-home-save.timer system/etc/systemd/system/
+[ -f /etc/systemd/system/ram-home-shutdown.service ] && sudo cp -v /etc/systemd/system/ram-home-shutdown.service system/etc/systemd/system/
 sudo cp -v /etc/systemd/system/zram.service system/etc/systemd/system/
+[ -f /etc/sudoers.d/wireguard-polybar ] && sudo cp -v /etc/sudoers.d/wireguard-polybar system/etc/sudoers.d/
 sudo cp -v /etc/systemd/journald.conf.d/99-ram.conf system/etc/systemd/journald.conf.d/
 sudo cp -v /etc/sysctl.d/99-live.conf system/etc/sysctl.d/
 sudo cp -v /etc/apt/apt.conf.d/99-live system/etc/apt/apt.conf.d/
@@ -38,6 +40,11 @@ sudo cp -v /usr/local/sbin/zram-setup.sh system/usr/local/sbin/
 sudo cp -v /usr/local/bin/telegram system/usr/local/bin/
 sudo cp -v /usr/local/bin/persist-save system/usr/local/bin/
 [ -f /usr/local/bin/clipnotify ] && sudo cp -v /usr/local/bin/clipnotify system/usr/local/bin/
+[ -f /usr/local/bin/sync-to-nvme.sh ] && sudo cp -v /usr/local/bin/sync-to-nvme.sh system/usr/local/bin/
+
+mkdir -p home/user/.local/bin
+[ -f ~/.local/bin/polybar-wireguard.sh ] && cp -v ~/.local/bin/polybar-wireguard.sh home/user/.local/bin/
+[ -f ~/.local/bin/sync-to-nvme.sh ] && cp -v ~/.local/bin/sync-to-nvme.sh home/user/.local/bin/
 
 mkdir -p system/etc/systemd/user/clipmenud.service.d
 sudo cp -v /etc/systemd/user/clipmenud.service.d/override.conf system/etc/systemd/user/clipmenud.service.d/

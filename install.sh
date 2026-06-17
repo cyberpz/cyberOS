@@ -58,6 +58,7 @@ fi
 sudo systemctl daemon-reload
 sudo systemctl enable ram-home.service
 sudo systemctl enable ram-home-save.timer
+[ -f /etc/systemd/system/ram-home-shutdown.service ] && sudo systemctl enable ram-home-shutdown.service
 sudo systemctl enable zram.service
 
 # 8. Applica sysctl

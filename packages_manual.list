@@ -76,6 +76,7 @@ flameshot
 fonts-font-awesome
 fonts-jetbrains-mono
 fonts-terminus
+fsarchiver
 gcc-14-base
 gdb
 git
@@ -147,6 +148,7 @@ libnettle8t64
 libnewt0.52
 libnftables1
 libnftnl11
+libnss3-tools
 libpam-modules
 libpam-modules-bin
 libpam-runtime
@@ -208,6 +210,7 @@ npm
 openssl-provider-legacy
 orchis-gtk-theme
 papirus-icon-theme
+partclone
 passwd
 pavucontrol
 perl-base

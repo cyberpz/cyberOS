@@ -1,0 +1,13 @@
+[Unit]
+Description=Save RAM home before shutdown
+DefaultDependencies=no
+Before=shutdown.target reboot.target halt.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStop=/usr/local/sbin/ram-home.sh save
+TimeoutStopSec=300
+
+[Install]
+WantedBy=multi-user.target
