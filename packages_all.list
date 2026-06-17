@@ -470,6 +470,7 @@ fonts-yrsa-rasa					install
 fortune-mod					install
 fortunes-debian-hints				install
 fortunes-it					install
+fsarchiver					install
 fuse3						install
 g++						install
 g++-14						install
@@ -2526,6 +2527,7 @@ p11-kit						install
 p11-kit-modules:amd64				install
 papirus-icon-theme				install
 parole						install
+partclone					install
 parted						install
 passwd						install
 patch						install

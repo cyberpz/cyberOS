@@ -30,6 +30,16 @@ sudo chmod +x /usr/local/sbin/zram-setup.sh
 sudo chmod +x /usr/local/bin/telegram
 sudo chmod +x /usr/local/bin/persist-save
 [ -f /usr/local/bin/clipnotify ] && sudo chmod +x /usr/local/bin/clipnotify
+[ -f "$USER_HOME/.local/bin/polybar-wireguard.sh" ] && chmod +x "$USER_HOME/.local/bin/polybar-wireguard.sh"
+
+# 4b. WireGuard config (contiene chiavi private)
+if [ -f "$REPO_DIR/system/etc/wireguard/PzBench.conf" ]; then
+    echo "[cyberOS] Installazione configurazione WireGuard..."
+    sudo mkdir -p /etc/wireguard
+    sudo cp -v "$REPO_DIR/system/etc/wireguard/PzBench.conf" /etc/wireguard/
+    sudo chmod 600 /etc/wireguard/PzBench.conf
+    sudo chown root:root /etc/wireguard/PzBench.conf
+fi
 
 # 5. Telegram Desktop in /opt
 if [ ! -d /opt/Telegram ]; then

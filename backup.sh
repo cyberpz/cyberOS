@@ -9,6 +9,8 @@ echo "[cyberOS-backup] Aggiornamento repo dal sistema..."
 
 # home configs
 mkdir -p home/user/.config/{i3,polybar,rofi,dunst,picom,alacritty}
+mkdir -p home/user/.local/bin
+mkdir -p home/user/Pictures
 cp -v ~/.config/i3/config home/user/.config/i3/
 cp -v ~/.config/i3/keybindings.md home/user/.config/i3/
 cp -v ~/.config/i3/help.txt home/user/.config/i3/
@@ -19,6 +21,8 @@ cp -v ~/.config/picom/picom.conf home/user/.config/picom/
 cp -v ~/.config/alacritty/alacritty.toml home/user/.config/alacritty/
 cp -v ~/.bash_aliases home/user/
 cp -v ~/.bashrc home/user/.bashrc.orig
+[ -f ~/.local/bin/polybar-wireguard.sh ] && cp -v ~/.local/bin/polybar-wireguard.sh home/user/.local/bin/
+[ -f ~/Pictures/wallpaper-custom.jpg ] && cp -v ~/Pictures/wallpaper-custom.jpg home/user/Pictures/
 
 # system configs
 mkdir -p system/etc/{systemd/system,systemd/journald.conf.d,sysctl.d,apt/apt.conf.d}
@@ -41,6 +45,10 @@ sudo cp -v /usr/local/bin/persist-save system/usr/local/bin/
 
 mkdir -p system/etc/systemd/user/clipmenud.service.d
 sudo cp -v /etc/systemd/user/clipmenud.service.d/override.conf system/etc/systemd/user/clipmenud.service.d/
+
+# wireguard config (contiene chiavi private: repo privato)
+mkdir -p system/etc/wireguard
+[ -f /etc/wireguard/PzBench.conf ] && sudo cp -v /etc/wireguard/PzBench.conf system/etc/wireguard/
 
 # boot configs from live medium
 mkdir -p boot/live-medium/boot/grub boot/live-medium/isolinux

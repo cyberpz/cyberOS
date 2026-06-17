@@ -76,6 +76,7 @@ flameshot
 fonts-font-awesome
 fonts-jetbrains-mono
 fonts-terminus
+fsarchiver
 gcc-14-base
 gdb
 git
@@ -208,6 +209,7 @@ npm
 openssl-provider-legacy
 orchis-gtk-theme
 papirus-icon-theme
+partclone
 passwd
 pavucontrol
 perl-base
