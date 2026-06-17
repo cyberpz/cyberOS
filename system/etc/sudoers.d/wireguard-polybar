@@ -1,0 +1,1 @@
+user ALL=(root) NOPASSWD: /usr/bin/wg-quick up PzBench, /usr/bin/wg-quick down PzBench

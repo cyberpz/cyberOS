@@ -1,18 +1,28 @@
 #!/bin/bash
-# Polybar WireGuard module per DebianPz
-WG_IF="PzBench"
+# polybar-wireguard.sh — Toggle WireGuard PzBench e mostra stato in polybar
 
-if [ "$1" = "--toggle" ]; then
-    if ip link show "$WG_IF" >/dev/null 2>&1; then
-        sudo wg-quick down "$WG_IF" >/dev/null 2>&1
+IFACE="PzBench"
+SCRIPT="$0"
+
+toggle() {
+    if ip link show "$IFACE" >/dev/null 2>&1; then
+        sudo wg-quick down "$IFACE"
     else
-        sudo wg-quick up "$WG_IF" >/dev/null 2>&1
+        sudo wg-quick up "$IFACE"
     fi
-    exit 0
-fi
+}
 
-if ip link show "$WG_IF" >/dev/null 2>&1; then
-    echo "%{F#00ff41}🛡️%{F-}"
-else
-    echo "%{F#6b6b8a}🔓%{F-}"
-fi
+show() {
+    if ip link show "$IFACE" >/dev/null 2>&1; then
+        # 🔒 connesso, verde Matrix
+        echo "%{A1:$SCRIPT toggle:}%{F#00ff41}🔒%{F-}%{A}"
+    else
+        # 🔓 disconnesso, grigio
+        echo "%{A1:$SCRIPT toggle:}%{F#6b6b8a}🔓%{F-}%{A}"
+    fi
+}
+
+case "${1:-show}" in
+    toggle) toggle ;;
+    *) show ;;
+esac

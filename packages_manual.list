@@ -148,6 +148,7 @@ libnettle8t64
 libnewt0.52
 libnftables1
 libnftnl11
+libnss3-tools
 libpam-modules
 libpam-modules-bin
 libpam-runtime
