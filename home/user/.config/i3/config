@@ -29,6 +29,7 @@ exec --no-startup-id /home/user/.local/bin/conky-desktop-layer.sh
 exec --no-startup-id /home/user/.local/bin/polybar-hover-monitor.sh
 exec --no-startup-id /home/user/.local/bin/setup-soft-bell.sh
 exec --no-startup-id systemctl --user start clipmenud
+exec --no-startup-id /usr/bin/kdeconnectd
 
 # Basic apps
 bindsym $mod+Return exec rofi -show drun -show-icons
@@ -44,6 +45,7 @@ bindsym $mod+question exec alacritty -e nvim /home/user/.config/i3/keybindings.m
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Uscire da i3?' -b 'Sì' 'i3-msg exit'"
 bindsym $mod+Shift+p exec --no-startup-id /home/user/.local/bin/power-menu.sh
 bindsym XF86PowerOff exec --no-startup-id /home/user/.local/bin/power-menu.sh
+bindsym $mod+Shift+k exec --no-startup-id /home/user/.local/bin/kdeconnect-menu.sh
 
 # Focus
 bindsym $mod+j focus left

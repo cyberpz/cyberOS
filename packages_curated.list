@@ -5,9 +5,11 @@ dunst
 firefox-esr
 flameshot
 fonts-terminus
+gvfs-backends
 i3-wm
 i3lock
 i3status
+kdeconnect
 libx11-dev
 libxfixes-dev
 lightdm

@@ -82,6 +82,7 @@ gdb
 git
 golang-go
 grep
+gvfs-backends
 gzip
 hostname
 htop
@@ -97,6 +98,7 @@ intel-microcode
 iproute2
 iputils-ping
 jq
+kdeconnect
 keepass2
 kmod
 less
