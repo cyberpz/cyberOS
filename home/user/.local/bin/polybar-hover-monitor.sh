@@ -19,7 +19,7 @@ exec 200>"$LOCKFILE"
 flock -n 200 || exit 0
 
 hover_show() {
-    for pid in $(pgrep -f "polybar cyber-hover$"); do
+    for pid in $(pgrep -f "polybar --reload cyber-hover"); do
         polybar-msg -p "$pid" cmd show >/dev/null 2>&1
     done
     # Porta la barra hover sopra ogni altra finestra
@@ -29,7 +29,7 @@ hover_show() {
 }
 
 hover_hide() {
-    for pid in $(pgrep -f "polybar cyber-hover$"); do
+    for pid in $(pgrep -f "polybar --reload cyber-hover"); do
         polybar-msg -p "$pid" cmd hide >/dev/null 2>&1
     done
 }
