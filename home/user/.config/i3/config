@@ -30,6 +30,7 @@ exec --no-startup-id /home/user/.local/bin/polybar-hover-monitor.sh
 exec --no-startup-id /home/user/.local/bin/setup-soft-bell.sh
 exec --no-startup-id systemctl --user start clipmenud
 exec --no-startup-id /usr/bin/kdeconnectd
+exec --no-startup-id /home/user/.local/bin/redshift-start.sh
 
 # Basic apps
 bindsym $mod+Return exec rofi -show drun -show-icons

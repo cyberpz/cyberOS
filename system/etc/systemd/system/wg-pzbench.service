@@ -1,0 +1,14 @@
+[Unit]
+Description=WireGuard PzBench VPN auto-connect
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=-/usr/bin/wg-quick down PzBench
+ExecStart=/usr/bin/wg-quick up PzBench
+ExecStop=/usr/bin/wg-quick down PzBench
+
+[Install]
+WantedBy=multi-user.target

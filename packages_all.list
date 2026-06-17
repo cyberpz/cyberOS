@@ -2695,6 +2695,7 @@ quodlibet					install
 re						install
 read-edid					install
 readline-common					install
+redshift					install
 resolvconf					install
 ripgrep						install
 ristretto					install

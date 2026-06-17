@@ -1,0 +1,10 @@
+[Unit]
+Description=cyberOS weekly backup to domus
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/user/cyberOS
+ExecStart=/home/user/cyberOS/backup.sh
+ExecStartPost=/usr/bin/git -C /home/user/cyberOS push domus master

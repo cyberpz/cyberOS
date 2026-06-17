@@ -16,8 +16,8 @@ fi
 id=$(echo "$devices" | head -1)
 name=$(kdeconnect-cli -l 2>/dev/null | grep "$id" | sed 's/.*: \(.*\) (\(.*\)).*/\1/')
 
-choices="Apri KDE Connect\nInvia ping\nTrova dispositivo\nCondividi clipboard\nInvia file...\nEsci"
-chosen=$(echo -e "$choices" | rofi -dmenu -p "$name" -no-show-icons -lines 6 -width 25 -location 0)
+choices="Apri KDE Connect\nInvia ping\nTrova dispositivo\nCondividi clipboard\nInvia testo...\nInvia file...\nEsci"
+chosen=$(echo -e "$choices" | rofi -dmenu -p "$name" -no-show-icons -lines 7 -width 25 -location 0)
 
 case "$chosen" in
     "Apri KDE Connect")
@@ -33,6 +33,12 @@ case "$chosen" in
         clip=$(xclip -o -selection clipboard 2>/dev/null || xsel -b 2>/dev/null || echo "")
         if [ -n "$clip" ]; then
             echo "$clip" | kdeconnect-cli -d "$id" --send-clipboard >/dev/null 2>&1
+        fi
+        ;;
+    "Invia testo...")
+        text=$(rofi -dmenu -p "Testo" -width 40)
+        if [ -n "$text" ]; then
+            kdeconnect-cli -d "$id" --share-text "$text" >/dev/null 2>&1
         fi
         ;;
     "Invia file...")

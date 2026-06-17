@@ -47,7 +47,7 @@ sudo cp -v /usr/local/bin/persist-save system/usr/local/bin/
 [ -f /usr/local/bin/sync-to-nvme.sh ] && sudo cp -v /usr/local/bin/sync-to-nvme.sh system/usr/local/bin/
 
 mkdir -p home/user/.local/bin
-for script in launch-polybar.sh polybar-hover-monitor.sh polybar-wireguard.sh polybar-bluetooth.sh polybar-kdeconnect.sh bluetooth-menu.sh sync-to-nvme.sh standby.sh power-menu.sh kdeconnect-menu.sh domus-chat.sh setup-domus-chat-profile.sh clipmenu-rofi.sh; do
+for script in launch-polybar.sh polybar-hover-monitor.sh polybar-wireguard.sh polybar-bluetooth.sh polybar-kdeconnect.sh bluetooth-menu.sh sync-to-nvme.sh standby.sh power-menu.sh redshift-start.sh kdeconnect-menu.sh domus-chat.sh setup-domus-chat-profile.sh clipmenu-rofi.sh; do
     [ -f "$HOME/.local/bin/$script" ] && cp -v "$HOME/.local/bin/$script" home/user/.local/bin/
 done
 

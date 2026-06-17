@@ -16,6 +16,7 @@ lightdm
 net-tools
 picom
 polybar
+redshift
 rofi
 rsync
 systemd-timesyncd
