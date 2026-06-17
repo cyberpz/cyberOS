@@ -43,6 +43,8 @@ sudo cp -v /usr/local/bin/persist-save system/usr/local/bin/
 [ -f /usr/local/bin/sync-to-nvme.sh ] && sudo cp -v /usr/local/bin/sync-to-nvme.sh system/usr/local/bin/
 
 mkdir -p home/user/.local/bin
+[ -f ~/.local/bin/launch-polybar.sh ] && cp -v ~/.local/bin/launch-polybar.sh home/user/.local/bin/
+[ -f ~/.local/bin/polybar-hover-monitor.sh ] && cp -v ~/.local/bin/polybar-hover-monitor.sh home/user/.local/bin/
 [ -f ~/.local/bin/polybar-wireguard.sh ] && cp -v ~/.local/bin/polybar-wireguard.sh home/user/.local/bin/
 [ -f ~/.local/bin/sync-to-nvme.sh ] && cp -v ~/.local/bin/sync-to-nvme.sh home/user/.local/bin/
 
