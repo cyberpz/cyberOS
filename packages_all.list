@@ -2736,6 +2736,7 @@ system-config-printer-common			install
 system-config-printer-udev			install
 systemd						install
 systemd-sysv					install
+systemd-timesyncd				install
 systemsettings					install
 sysvinit-utils					install
 t1-cyrillic					install

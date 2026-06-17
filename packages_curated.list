@@ -18,6 +18,7 @@ picom
 polybar
 rofi
 rsync
+systemd-timesyncd
 thunar
 wireguard
 x11-xserver-utils

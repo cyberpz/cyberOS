@@ -233,6 +233,7 @@ sqv
 sshpass
 systemd
 systemd-sysv
+systemd-timesyncd
 sysvinit-utils
 tar
 tmux
