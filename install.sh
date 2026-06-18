@@ -32,6 +32,9 @@ sudo chmod +x /usr/local/bin/persist-save
 [ -f /usr/local/bin/clipnotify ] && sudo chmod +x /usr/local/bin/clipnotify
 find "$USER_HOME/.local/bin" -maxdepth 1 -type f -exec chmod +x {} \;
 
+# 4c. Udev rules (NVMe/SSD scheduler none)
+[ -d "$REPO_DIR/system/etc/udev/rules.d" ] && sudo rsync -av "$REPO_DIR/system/etc/udev/rules.d/" /etc/udev/rules.d/ && sudo udevadm control --reload-rules
+
 # 4b. WireGuard config (contiene chiavi private)
 if [ -f "$REPO_DIR/system/etc/wireguard/PzBench.conf" ]; then
     echo "[cyberOS] Installazione configurazione WireGuard..."

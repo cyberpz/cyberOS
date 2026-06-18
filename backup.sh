@@ -55,6 +55,10 @@ done
 mkdir -p system/etc/systemd/user/clipmenud.service.d
 sudo cp -v /etc/systemd/user/clipmenud.service.d/override.conf system/etc/systemd/user/clipmenud.service.d/
 
+# udev rules
+mkdir -p system/etc/udev/rules.d
+[ -d /etc/udev/rules.d ] && sudo rsync -av /etc/udev/rules.d/ system/etc/udev/rules.d/
+
 # wireguard config (contiene chiavi private: repo privato)
 mkdir -p system/etc/wireguard
 [ -f /etc/wireguard/PzBench.conf ] && sudo cp -v /etc/wireguard/PzBench.conf system/etc/wireguard/
