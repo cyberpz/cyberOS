@@ -74,6 +74,10 @@ sudo systemctl enable zram.service
 # 8. Applica sysctl
 sudo sysctl --system
 
+# 8b. Timezone UTC+2 (Europe/Rome)
+echo "[cyberOS] Impostazione timezone Europe/Rome..."
+sudo timedatectl set-timezone Europe/Rome
+
 # 9. Bootloader della chiavetta (opzionale, richiede medium RW)
 if mountpoint -q "$LIVE_MEDIUM"; then
     echo "[cyberOS] La chiavetta è montata in $LIVE_MEDIUM (probabilmente read-only)."

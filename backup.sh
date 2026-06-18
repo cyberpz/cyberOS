@@ -37,6 +37,7 @@ sudo cp -v /etc/systemd/journald.conf.d/99-ram.conf system/etc/systemd/journald.
 sudo cp -v /etc/sysctl.d/99-live.conf system/etc/sysctl.d/
 sudo cp -v /etc/apt/apt.conf.d/99-live system/etc/apt/apt.conf.d/
 sudo cp -v /etc/apt/sources.list system/etc/apt/
+[ -f /etc/timezone ] && sudo cp -v /etc/timezone system/etc/
 
 mkdir -p system/usr/local/{bin,sbin}
 sudo cp -v /usr/local/sbin/ram-home.sh system/usr/local/sbin/
