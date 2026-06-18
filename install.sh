@@ -78,6 +78,13 @@ sudo sysctl --system
 echo "[cyberOS] Impostazione timezone Europe/Rome..."
 sudo timedatectl set-timezone Europe/Rome
 
+# 8c. Ottimizzazioni Firefox
+if [ -f "$USER_HOME/.local/bin/firefox-optimize.sh" ]; then
+    echo "[cyberOS] Ottimizzazioni Firefox..."
+    TARGET_USER=$(basename "$USER_HOME")
+    sudo -u "$TARGET_USER" bash "$USER_HOME/.local/bin/firefox-optimize.sh" 2>/dev/null || true
+fi
+
 # 9. Bootloader della chiavetta (opzionale, richiede medium RW)
 if mountpoint -q "$LIVE_MEDIUM"; then
     echo "[cyberOS] La chiavetta è montata in $LIVE_MEDIUM (probabilmente read-only)."
