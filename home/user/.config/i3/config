@@ -24,14 +24,15 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/libexec/polkit-mate-authentication-agent-1
-exec --no-startup-id xss-lock -- i3lock -n -c 000000
+exec --no-startup-id xss-lock -- /home/user/.local/bin/lock-cyber.sh
 exec --no-startup-id /home/user/.local/bin/conky-desktop-layer.sh
-exec --no-startup-id /home/user/.local/bin/polybar-hover-monitor.sh
+; exec --no-startup-id /home/user/.local/bin/polybar-hover-monitor.sh
 exec --no-startup-id /home/user/.local/bin/setup-soft-bell.sh
 exec --no-startup-id systemctl --user start clipmenud
 exec --no-startup-id /usr/bin/kdeconnectd
 exec --no-startup-id /home/user/.local/bin/redshift-start.sh
 exec --no-startup-id /home/user/.local/bin/brightness-max.sh
+exec --no-startup-id /home/user/.local/bin/auto-suspend.sh
 
 # Basic apps
 bindsym $mod+Return exec rofi -show drun -show-icons
@@ -47,7 +48,8 @@ bindsym $mod+question exec alacritty -e nvim /home/user/.config/i3/keybindings.m
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Uscire da i3?' -b 'Sì' 'i3-msg exit'"
 bindsym $mod+Shift+p exec --no-startup-id /home/user/.local/bin/power-menu.sh
 bindsym XF86PowerOff exec --no-startup-id /home/user/.local/bin/power-menu.sh
-bindsym $mod+Shift+k exec --no-startup-id /home/user/.local/bin/kdeconnect-menu.sh
+bindsym $mod+Shift+m exec --no-startup-id /home/user/.local/bin/kdeconnect-menu.sh
+bindsym $mod+Shift+x exec --no-startup-id /home/user/.local/bin/lock-cyber.sh
 
 # Focus
 bindsym $mod+j focus left
@@ -69,39 +71,28 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Workspaces
-set $ws1 "1:term"
-set $ws2 "2:web"
-set $ws3 "3:code"
-set $ws4 "4:files"
-set $ws5 "5:git"
-set $ws6 "6:chat"
-set $ws7 "7:media"
-set $ws8 "8:sys"
-set $ws9 "9:vm"
-set $ws10 "10:music"
+# Workspaces (nomi dinamici gestiti da i3-dynamic-workspace-names.sh)
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
-
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
 # Layout
 bindsym $mod+Shift+v split v
@@ -147,6 +138,9 @@ bindsym $mod+minus scratchpad show
 
 # Polybar top bar (squared, Cyber.Pz on the far left)
 exec_always --no-startup-id /home/user/.local/bin/launch-polybar.sh
+
+# Rinomina i workspace in base al titolo della finestra attiva
+exec --no-startup-id /home/user/.local/bin/i3-dynamic-workspace-names.sh
 
 # Window rules
 for_window [class="Pavucontrol"] floating enable

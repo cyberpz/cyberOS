@@ -4,7 +4,7 @@
 set -e
 
 USER_HOME=/home/user
-RAM_SIZE=4G
+RAM_SIZE=5G
 
 # Find live persistence mount point
 PERSIST_BASE=$(findmnt -n -o TARGET /run/live/persistence/* 2>/dev/null | head -n1)
@@ -22,7 +22,6 @@ EXCLUDE_LIST=(
     ".kimi-code/logs"
     ".kimi-code/telemetry"
     ".kimi-code/updates"
-    ".kimi-code/bin"
     ".config/opencode"
     # ".mozilla"  # profilo firefox: meglio conservarlo
 )
@@ -37,6 +36,16 @@ build_rsync_excludes() {
         args="$args --exclude=\"$ex\""
     done
     echo "$args"
+}
+
+# Esegue rsync tollerando il codice 24 (file scomparsi durante il trasferimento)
+rsync_safe() {
+    rsync "$@"
+    local rc=$?
+    if [ $rc -eq 0 ] || [ $rc -eq 24 ]; then
+        return 0
+    fi
+    return $rc
 }
 
 do_start() {
@@ -58,7 +67,7 @@ do_start() {
         log "Creating initial persistent home backup"
         mkdir -p "$PERSIST_DIR/home"
         # shellcheck disable=SC2086
-        rsync -a --delete \
+        rsync_safe -a --delete \
             $(build_rsync_excludes) \
             "$USER_HOME/" "$PERSIST_DIR/home/"
     fi
@@ -68,9 +77,9 @@ do_start() {
 
     if [ -d "$PERSIST_DIR/home" ]; then
         log "Restoring RAM home from $PERSIST_DIR/home"
-        # -W = whole-file, più veloce su supporti lenti quando non serve il delta
+        # -W = whole-file, piu veloce su supporti lenti quando non serve il delta
         # shellcheck disable=SC2086
-        rsync -aW --delete \
+        rsync_safe -aW --delete \
             $(build_rsync_excludes) \
             "$PERSIST_DIR/home/" "$USER_HOME/"
     else
@@ -89,7 +98,7 @@ do_save() {
         log "Saving RAM home to $PERSIST_DIR/home"
         mkdir -p "$PERSIST_DIR/home"
         # shellcheck disable=SC2086
-        rsync -a --delete \
+        rsync_safe -a --delete \
             $(build_rsync_excludes) \
             "$USER_HOME/" "$PERSIST_DIR/home/"
     else
