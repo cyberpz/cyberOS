@@ -1,0 +1,48 @@
+configuration {
+    font: "JetBrains Mono 18";
+}
+
+window {
+    width: 18%;
+    background-color: #0a0a1c;
+    border: 2px;
+    border-color: #00ff41;
+    padding: 12px;
+}
+
+mainbox {
+    background-color: #0a0a1c;
+    children: [inputbar, listview];
+    spacing: 10px;
+}
+
+inputbar {
+    background-color: #15152b;
+    text-color: #00ff41;
+    padding: 8px;
+    children: [prompt];
+}
+
+listview {
+    background-color: #0a0a1c;
+    lines: 3;
+    fixed-height: false;
+    spacing: 6px;
+}
+
+element {
+    background-color: #0a0a1c;
+    text-color: #c7c7d9;
+    padding: 8px;
+}
+
+element selected {
+    background-color: #00ff41;
+    text-color: #0a0a1c;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    horizontal-align: 0.5;
+}

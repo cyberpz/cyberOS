@@ -33,6 +33,7 @@ exec --no-startup-id /usr/bin/kdeconnectd
 exec --no-startup-id /home/user/.local/bin/redshift-start.sh
 exec --no-startup-id /home/user/.local/bin/brightness-max.sh
 exec --no-startup-id /home/user/.local/bin/auto-suspend.sh
+exec --no-startup-id /home/user/.local/bin/battery-monitor.sh
 
 # Basic apps
 bindsym $mod+Return exec rofi -show drun -show-icons

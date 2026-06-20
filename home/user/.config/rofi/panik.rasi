@@ -1,0 +1,22 @@
+configuration {
+    font: "JetBrains Mono 128";
+}
+
+window {
+    fullscreen: true;
+    background-color: #7b00ff;
+    border: 0;
+    padding: 0;
+}
+
+mainbox {
+    background-color: #7b00ff;
+    children: [textbox];
+}
+
+textbox {
+    background-color: #7b00ff;
+    text-color: #00ff41;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
