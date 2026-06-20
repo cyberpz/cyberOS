@@ -57,5 +57,10 @@ link_dir "/home/user/.gradle"                   "gradle"
 link_dir "/home/user/.pub-cache"                "pub-cache"
 link_dir "/home/user/Downloads"                 "Downloads"
 link_dir "/home/user/.config/opencode"          "opencode-config"
+link_dir "/home/user/.cache/uv"                 "uv-cache"
+
+# Gradle cache specifica dei progetti in RAM
+link_dir "/home/user/Projects/.gradle"          "projects-gradle"
+link_dir "/home/user/Projects/.repowise-venv"   "projects-repowise-venv"
 
 echo "[OK] Home cache links ready."
