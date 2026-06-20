@@ -2,7 +2,7 @@
 # Sospende il sistema dopo un periodo di inattivita' input, a meno che la CPU
 # non sia occupata (load average sopra soglia).
 
-IDLE_LIMIT_MS=1800000   # 30 minuti di inattivita'
+IDLE_LIMIT_MS=${1:-1800000}   # 30 minuti di inattivita' (default); passa un argomento per sovrascrivere
 CHECK_INTERVAL=60       # controlla ogni 60 secondi
 LOAD_THRESHOLD=0.5      # non sospendere se il sistema sta lavorando
 
