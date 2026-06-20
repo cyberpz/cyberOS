@@ -26,7 +26,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id /usr/libexec/polkit-mate-authentication-agent-1
 exec --no-startup-id xss-lock -- /home/user/.local/bin/lock-cyber.sh
 exec --no-startup-id /home/user/.local/bin/conky-desktop-layer.sh
-; exec --no-startup-id /home/user/.local/bin/polybar-hover-monitor.sh
+# exec --no-startup-id /home/user/.local/bin/polybar-hover-monitor.sh
 exec --no-startup-id /home/user/.local/bin/setup-soft-bell.sh
 exec --no-startup-id systemctl --user start clipmenud
 exec --no-startup-id /usr/bin/kdeconnectd
